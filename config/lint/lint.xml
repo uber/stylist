@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="AppCompatCustomView" severity="ignore" />
+    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+    <issue id="GradleCompatible" severity="ignore" />
+    <issue id="IconLauncherFormat" severity="ignore" />
+</lint>
