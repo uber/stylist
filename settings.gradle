@@ -1,0 +1,7 @@
+include ':stylist'
+include ':stylist-api'
+include ':stylist-core'
+include ':resources-poet'
+include ':sample:app'
+include ':sample:library'
+include ':sample:providers'

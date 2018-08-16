@@ -1,0 +1,25 @@
+apply plugin: "java-library"
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation deps.kotlin.stdLibJre8
+    implementation deps.support.annotations
+    implementation project(":resources-poet")
+    implementation project(":stylist-api")
+
+    // Dont need to run tests in buildSrc
+    if (rootProject.projectDir.name != "buildSrc") {
+        testImplementation deps.support.annotations
+        testImplementation deps.test.compileTesting
+        testImplementation deps.test.junit
+        testImplementation deps.test.robolectric
+        testImplementation deps.test.truth
+    }
+}
+
+if (rootProject.projectDir.name != "buildSrc") {
+    apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+}

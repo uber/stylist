@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <attr name="textSizeSmall"/>
+  <attr name="textSizeMedium"/>
+  <attr name="textSizeLarge"/>
+
+  <attr name="dialogSpecificAttr1"/>
+  <attr name="dialogSpecificAttr2"/>
+</resources>
