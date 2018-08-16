@@ -32,6 +32,6 @@ open class StylistTask : DefaultTask() {
 
     @TaskAction
     fun execute(inputs: IncrementalTaskInputs) {
-        generateThemesFor(outputDirectory, formatSource)
+        Stylist.generateThemesFor(outputDirectory, formatSource)
     }
 }

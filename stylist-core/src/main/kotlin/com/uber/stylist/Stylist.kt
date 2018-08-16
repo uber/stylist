@@ -23,30 +23,33 @@ import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import com.uber.stylist.api.ThemeStencilService
 
-fun generateThemesFor(
+object Stylist {
+
+  fun generateThemesFor(
       outputDir: File, formatSource: Boolean) {
-  val themeStencilService = ThemeStencilService.newInstance()
-  val styleItemGroups = themeStencilService.getGlobalStyleItemGroups()
-  val stencils = themeStencilService.getStencils()
-  generateThemesForStencils(stencils, styleItemGroups, outputDir, formatSource)
-}
+    val themeStencilService = ThemeStencilService.newInstance()
+    val styleItemGroups = themeStencilService.getGlobalStyleItemGroups()
+    val stencils = themeStencilService.getStencils()
+    generateThemesForStencils(stencils, styleItemGroups, outputDir, formatSource)
+  }
 
-@VisibleForTesting
-fun generateThemesForStencils(
-    stencils: Set<ThemeStencil>,
-    styleItemGroups: Set<StyleItemGroup>,
-    outputDir: File,
-    formatSource: Boolean) {
+  @VisibleForTesting
+  fun generateThemesForStencils(
+      stencils: Set<ThemeStencil>,
+      styleItemGroups: Set<StyleItemGroup>,
+      outputDir: File,
+      formatSource: Boolean) {
 
-  val valuesFolder = File("$outputDir/values").apply { mkdirs() }
-  val themesXml = File(valuesFolder, "ub__themes_generated.xml").apply { createNewFile() }
+    val valuesFolder = File("$outputDir/values").apply { mkdirs() }
+    val themesXml = File(valuesFolder, "ub__themes_generated.xml").apply { createNewFile() }
 
-  ResourcesPoet.create().apply {
-    stencils.forEach {
-      it.setGlobalStyleItemGroups(styleItemGroups)
-      addStyle(it.name, it.parent, it.styleItems())
+    ResourcesPoet.create().apply {
+      stencils.forEach {
+        it.setGlobalStyleItemGroups(styleItemGroups)
+        addStyle(it.name, it.parent, it.styleItems())
+      }
+      indent(formatSource)
+      build(themesXml)
     }
-    indent(formatSource)
-    build(themesXml)
   }
 }
