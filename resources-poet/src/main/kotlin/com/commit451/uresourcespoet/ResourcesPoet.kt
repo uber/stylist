@@ -22,7 +22,9 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
 /**
- * Helps generate XML configuration files for Android
+ * Helps generate XML configuration files for Android.
+ *
+ * Using a forked version to avoid pulling in a dependency from [jitpack.io](jitpack.io).
  */
 class ResourcesPoet private constructor() {
 
