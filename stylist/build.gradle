@@ -7,7 +7,7 @@ dependencies {
     compileOnly gradleApi()
 
     implementation deps.build.androidPlugin
-    implementation deps.kotlin.stdLibJre8
+    implementation deps.kotlin.stdLibJdk8
     implementation project(":stylist-core")
 }
 

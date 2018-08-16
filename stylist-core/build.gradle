@@ -5,7 +5,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
-    implementation deps.kotlin.stdLibJre8
+    implementation deps.kotlin.stdLibJdk8
     implementation deps.support.annotations
     implementation project(":resources-poet")
     implementation project(":stylist-api")
@@ -15,7 +15,6 @@ dependencies {
         testImplementation deps.support.annotations
         testImplementation deps.test.compileTesting
         testImplementation deps.test.junit
-        testImplementation deps.test.robolectric
         testImplementation deps.test.truth
     }
 }
