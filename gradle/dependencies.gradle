@@ -1,0 +1,70 @@
+/*
+ * Copyright (C) 2018. Uber Technologies
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+def versions = [
+    kotlin    : "1.2.0",
+    support   : "27.1.0"
+]
+
+def apt = [
+    autoService : "com.google.auto.service:auto-service:1.0-rc4"
+]
+
+def build = [
+    androidPlugin       : "com.android.tools.build:gradle:3.1.0",
+    buildToolsVersion   : "27.0.3",
+    compileSdkVersion   : 27,
+    ci: 'true' == System.getenv('CI'),
+    googleJavaFormatter : "com.google.googlejavaformat:google-java-format:1.4",
+    gradleAptPlugin     : "net.ltgt.gradle:gradle-apt-plugin:0.15",
+    gradlePluginsUrl    : "https://plugins.gradle.org/m2/",
+    minSdkVersion       : 16,
+    targetSdkVersion    : 27
+]
+
+def external = [
+
+]
+
+def kotlin = [
+    gradlePlugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+    stdLibJre7   : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
+]
+
+def support = [
+    annotations      : "com.android.support:support-annotations:${versions.support}",
+    appcompat        : "com.android.support:appcompat-v7:${versions.support}",
+    constraintLayout : "com.android.support.constraint:constraint-layout:1.1.2",
+    v4               : "com.android.support:support-v4:${versions.support}"
+]
+
+def test = [
+    compileTesting : "com.google.testing.compile:compile-testing:0.11",
+    junit          : 'junit:junit:4.12',
+    robolectric    : "org.robolectric:android-all:8.1.0-robolectric-4402310",
+    truth          : "com.google.truth:truth:0.34"
+]
+
+ext.deps = [
+    "apt"      : apt,
+    "build"    : build,
+    "external" : external,
+    "kotlin"   : kotlin,
+    "support"  : support,
+    "test"     : test,
+    "versions" : versions
+]
+
