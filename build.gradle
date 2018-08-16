@@ -63,3 +63,4 @@ task clean(type: Delete) {
 }
 
 apply from: 'gradle/dependencies.gradle'
+apply from: 'gradle/checkstyle.gradle'

@@ -39,16 +39,6 @@ android {
     }
 }
 
-// This is required to run checkstyle on an android app/library.
-task checkstyle(type: Checkstyle) {
-   source 'src'
-   include '**/*.java'
-   exclude '**/gen/**'
-
-   classpath = files()
-}
-check.dependsOn 'checkstyle'
-
 dependencies {
     implementation project(":sample:library")
     implementation deps.support.appcompat
