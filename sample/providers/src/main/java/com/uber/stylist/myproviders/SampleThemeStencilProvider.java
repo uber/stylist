@@ -8,8 +8,6 @@ import com.uber.stylist.api.StyleItemGroup;
 import com.uber.stylist.api.ThemeStencil;
 import com.uber.stylist.api.ThemeStencilProvider;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -45,7 +43,7 @@ public class SampleThemeStencilProvider implements ThemeStencilProvider {
     ));
   }
 
-  @NotNull
+  @NonNull
   @Override
   public Set<StyleItemGroup> globalStyleItemGroups() {
     return new LinkedHashSet<>(Arrays.asList(

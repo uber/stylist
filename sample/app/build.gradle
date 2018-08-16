@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-if (project.rootProject.name != 'buildSrc') {
-    apply plugin: 'com.uber.stylist'
-}
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion deps.build.compileSdkVersion
     buildToolsVersion deps.build.buildToolsVersion
 
     defaultConfig {
+        applicationId "com.uber.stylist.myapplication"
         minSdkVersion deps.build.minSdkVersion
         targetSdkVersion deps.build.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -35,11 +34,13 @@ android {
 
     // Setup a simple lint config for an android app/library.
     lintOptions {
-        abortOnError false
+        abortOnError true
         lintConfig rootProject.file('config/lint/lint.xml')
     }
 }
 
 dependencies {
+    implementation project(":sample:library")
     implementation deps.support.appcompat
+    implementation deps.support.constraintLayout
 }

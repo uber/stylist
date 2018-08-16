@@ -1,0 +1,4 @@
+<resources>
+    <style name="AppTheme" parent="Theme.Sample"/>
+    <style name="AppTheme.Dialog.Light" parent="Theme.Sample.Light.Dialog"/>
+</resources>

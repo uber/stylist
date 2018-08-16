@@ -1,0 +1,7 @@
+// These are not needed if consuming the Stylist plugin from Maven Central instead of the local copy from this repo
+include ':stylist'
+include ':stylist-api'
+include ':stylist-core'
+include ':resources-poet'
+
+include ':sample:providers'

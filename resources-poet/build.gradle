@@ -1,5 +1,5 @@
 apply plugin: "org.jetbrains.kotlin.jvm"
 
 dependencies {
-    implementation deps.kotlin.stdLibJre8
+    implementation deps.kotlin.stdLibJdk8
 }
