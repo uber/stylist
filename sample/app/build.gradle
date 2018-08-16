@@ -23,7 +23,7 @@ android {
     defaultConfig {
         applicationId "com.uber.stylist.myapplication"
         minSdkVersion deps.build.minSdkVersion
-        targetSdkVersion 26
+        targetSdkVersion deps.build.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
