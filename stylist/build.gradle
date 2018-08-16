@@ -1,13 +1,13 @@
 apply plugin: "org.jetbrains.kotlin.jvm"
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
     compileOnly gradleApi()
 
     implementation deps.build.androidPlugin
-    implementation deps.kotlin.stdLibJre7
+    implementation deps.kotlin.stdLibJre8
     implementation project(":stylist-core")
 }
 
