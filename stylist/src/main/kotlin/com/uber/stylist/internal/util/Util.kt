@@ -20,8 +20,8 @@ import com.android.build.gradle.api.BaseVariant
 import org.gradle.api.Project
 import java.io.File
 
-fun resolveVariantOutputDir(project: Project, variant: BaseVariant, plugin: String): File = project.file(
+internal fun resolveVariantOutputDir(project: Project, variant: BaseVariant, plugin: String): File = project.file(
         "${project.projectDir}/build/generated/res/$plugin/${variant.flavorName}/${variant.buildType.name}".sanitize()
 )
 
-fun String.sanitize(): String = replace('/', File.separatorChar)
+internal fun String.sanitize(): String = replace('/', File.separatorChar)
