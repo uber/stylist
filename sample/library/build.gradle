@@ -51,5 +51,5 @@ task checkstyle(type: Checkstyle) {
 check.dependsOn 'checkstyle'
 
 dependencies {
-    api deps.support.appcompat
+    implementation deps.support.appcompat
 }
