@@ -13,7 +13,6 @@ dependencies {
     // Dont need to run tests in buildSrc
     if (rootProject.projectDir.name != "buildSrc") {
         testImplementation deps.support.annotations
-        testImplementation deps.test.compileTesting
         testImplementation deps.test.junit
         testImplementation deps.test.truth
     }

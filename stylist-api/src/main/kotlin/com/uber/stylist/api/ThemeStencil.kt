@@ -30,6 +30,9 @@ class ThemeStencil(
       .toList()
 
   fun setGlobalStyleItemGroups(styleItemGroups: Set<StyleItemGroup>) {
-    globalStyleItemGroups.addAll(styleItemGroups)
+    globalStyleItemGroups.apply {
+      clear()
+      addAll(styleItemGroups)
+    }
   }
 }
