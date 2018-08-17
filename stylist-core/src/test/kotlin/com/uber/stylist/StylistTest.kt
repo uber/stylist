@@ -3,6 +3,7 @@ package com.uber.stylist
 import com.commit451.uresourcespoet.StyleItem
 import com.google.common.io.Files
 import com.google.common.truth.Truth.assertThat
+import com.uber.stylist.Stylist.DEFAULT_THEMES_XML_FILENAME
 import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import org.junit.Test
@@ -10,8 +11,6 @@ import org.junit.Test
 class StylistTest {
 
   companion object {
-    private const val THEME_XML_FILE_NAME = "themes_stylist_generated.xml"
-
     private const val THEMES_NO_THEMES = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources/>
 """
@@ -189,13 +188,11 @@ class StylistTest {
     testXml(emptySet(), emptySet(), THEMES_NO_THEMES)
   }
 
-  // failing
   @Test
   fun testStylist_withNoStyleGroups_shouldGenerateExpectedXml() {
     testXml(themeStencils, linkedSetOf(), THEMES_NO_STYLE_GROUPS)
   }
 
-  // failing
   @Test
   fun testStylist_withSingleStyleGroup_shouldGenerateExpectedXml() {
     testXml(themeStencils, linkedSetOf(basicAppColors), THEMES_WITH_STYLE_GROUP)
@@ -216,13 +213,23 @@ class StylistTest {
     testXml(themeStencils, linkedSetOf(basicAppColors), THEMES_UNFORMATTED, formatSource = false)
   }
 
-  private fun testXml(stencils: Set<ThemeStencil>, globalStyleGroups: Set<StyleItemGroup>, expectedXml: String, formatSource: Boolean = true) {
+  @Test
+  fun testStylist_withNonDefaultThemesXmlFilename_shouldCorrectFile() {
+    testXml(themeStencils, linkedSetOf(basicAppColors), THEMES_WITH_STYLE_GROUP, themesXmlFileName = "generated_themes_xml_alt_filename.xml")
+  }
+
+  private fun testXml(
+      stencils: Set<ThemeStencil>,
+      globalStyleGroups: Set<StyleItemGroup>,
+      expectedXml: String,
+      themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME,
+      formatSource: Boolean = true) {
     val outputDir = Files.createTempDir()
     outputDir.resolve("values").apply {
-      Stylist.generateThemesForStencils(stencils, globalStyleGroups, outputDir, formatSource)
+      Stylist.generateThemesForStencils(stencils, globalStyleGroups, outputDir, themesXmlFileName = themesXmlFileName, formatSource = formatSource)
 
       val xmlFileNames = listFiles().map { it.name }.toList()
-      assertThat(xmlFileNames).containsExactly(THEME_XML_FILE_NAME)
+      assertThat(xmlFileNames).containsExactly(themesXmlFileName)
 
       val generatedThemesXml = listFiles().first().readText()
       assertThat(generatedThemesXml).isEqualTo(expectedXml)

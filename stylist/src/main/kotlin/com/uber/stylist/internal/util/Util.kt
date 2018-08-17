@@ -21,7 +21,7 @@ import org.gradle.api.Project
 import java.io.File
 
 internal fun resolveVariantOutputDir(project: Project, variant: BaseVariant, plugin: String): File = project.file(
-        "${project.projectDir}/build/generated/res/$plugin/${variant.flavorName}/${variant.buildType.name}".sanitize()
+    "${project.projectDir}/build/generated/res/$plugin/${variant.flavorName}/${variant.buildType.name}".sanitize()
 )
 
 internal fun String.sanitize(): String = replace('/', File.separatorChar)

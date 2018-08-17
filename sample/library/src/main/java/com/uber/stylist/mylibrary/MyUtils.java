@@ -22,5 +22,4 @@ package com.uber.stylist.mylibrary;
 public final class MyUtils {
 
   private MyUtils() { }
-
 }
