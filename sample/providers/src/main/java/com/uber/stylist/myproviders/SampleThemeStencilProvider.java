@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Sample provider for the themes to generate.
+ */
 @AutoService(ThemeStencilProvider.class)
 public class SampleThemeStencilProvider implements ThemeStencilProvider {
 
@@ -23,7 +26,7 @@ public class SampleThemeStencilProvider implements ThemeStencilProvider {
 
   private StyleItemGroup textSizes = new StyleItemGroup(
       new StyleItem("textSizeSmall", "12dp"),
-      new StyleItem("textSizeMedium","16dp"),
+      new StyleItem("textSizeMedium", "16dp"),
       new StyleItem("textSizeLarge", "20dp")
   );
 
@@ -32,6 +35,10 @@ public class SampleThemeStencilProvider implements ThemeStencilProvider {
       new StyleItem("dialogSpecificAttr2", "bar")
   );
 
+  /**
+   *
+   * @return a set of theme stencils
+   */
   @NonNull
   @Override
   public Set<ThemeStencil> stencils() {
@@ -43,6 +50,10 @@ public class SampleThemeStencilProvider implements ThemeStencilProvider {
     ));
   }
 
+  /**
+   *
+   * @return a set of StyleItemGroups
+   */
   @NonNull
   @Override
   public Set<StyleItemGroup> globalStyleItemGroups() {
