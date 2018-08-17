@@ -25,6 +25,8 @@ import com.uber.stylist.api.ThemeStencilService
 
 object Stylist {
 
+  const val DEFAULT_THEMES_XML_FILENAME = "themes_stylist_generated.xml"
+
   fun generateThemesFor(
       outputDir: File, themesXmlFileName: String, formatSource: Boolean) {
     val themeStencilService = ThemeStencilService.newInstance()

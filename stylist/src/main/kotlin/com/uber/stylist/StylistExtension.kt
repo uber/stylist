@@ -16,17 +16,15 @@
 
 package com.uber.stylist
 
-import com.uber.stylist.StylistPlugin.Companion.DEFAULT_THEMES_XML_FILENAME
+import com.uber.stylist.Stylist.DEFAULT_THEMES_XML_FILENAME
 
 class StylistExtension {
 
   /**
    * Optional setting to control the name of the generated themes.xml file. Defaults to
-   * "themes_stylist_generated.xml"
-   *
-   * @see StylistPlugin.Companion.DEFAULT_THEMES_XML_FILENAME
+   * "themes_stylist_generated.xml" as defined in [Stylist.DEFAULT_THEMES_XML_FILENAME].
    */
-  var themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME
+  var themesXmlFilename: String = DEFAULT_THEMES_XML_FILENAME
 
   /**
    * Optional setting to control whether the source is formatted with Google Java Format. Defaults to true.

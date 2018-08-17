@@ -3,6 +3,7 @@ package com.uber.stylist
 import com.commit451.uresourcespoet.StyleItem
 import com.google.common.io.Files
 import com.google.common.truth.Truth.assertThat
+import com.uber.stylist.Stylist.DEFAULT_THEMES_XML_FILENAME
 import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import org.junit.Test
@@ -10,8 +11,6 @@ import org.junit.Test
 class StylistTest {
 
   companion object {
-    private const val DEFAULT_THEMES_XML_FILE_NAME = "themes_stylist_generated.xml"
-
     private const val THEMES_NO_THEMES = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources/>
 """
@@ -223,7 +222,7 @@ class StylistTest {
       stencils: Set<ThemeStencil>,
       globalStyleGroups: Set<StyleItemGroup>,
       expectedXml: String,
-      themesXmlFileName: String = DEFAULT_THEMES_XML_FILE_NAME,
+      themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME,
       formatSource: Boolean = true) {
     val outputDir = Files.createTempDir()
     outputDir.resolve("values").apply {
