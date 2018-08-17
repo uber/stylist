@@ -31,6 +31,7 @@ subprojects {
     apply plugin: 'checkstyle'
 
     afterEvaluate {
+        def checkstyleConfig = rootProject.file('config/checkstyle/checkstyle.xml')
         if (project.getPlugins().hasPlugin('com.android.application') ||
                 project.getPlugins().hasPlugin('com.android.library')) {
 
@@ -46,7 +47,7 @@ subprojects {
                     xml.destination "$project.buildDir/reports/checkstyle/main.xml"
                 }
                 classpath = files()
-                configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+                configFile = checkstyleConfig
             }
 
             task checkstyleTest(type: Checkstyle){
@@ -61,7 +62,7 @@ subprojects {
                     xml.destination "$project.buildDir/reports/checkstyle/test.xml"
                 }
                 classpath = files()
-                configFile = rootProject.file('checkstyle.xml')
+                configFile = checkstyleConfig
             }
 
             task checkstyle(dependsOn:['checkstyleMain', 'checkstyleTest']){
@@ -74,7 +75,7 @@ subprojects {
             checkstyle {
                 ignoreFailures = false
                 showViolations = true
-                configFile rootProject.file('checkstyle.xml')
+                configFile checkstyleConfig
             }                    
         }
 
