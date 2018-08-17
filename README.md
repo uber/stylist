@@ -1,4 +1,4 @@
-# Stylist [![Build Status](https://travis-ci.org/uber/stylist.svg?branch=master)](https://travis-ci.org/uber/stylist)
+# Stylist [![Build Status](https://travis-ci.com/uber/stylist.svg?branch=master)](https://travis-ci.com/uber/stylist)
 
 As Android apps grow, providing common styles and consistent styling across app themes becomes challenging. Typically, this results in copy-pasting style items across themes, monolithic themes, or complicated inheritance trees. Stylist is a highly-extensible platform for creating and maintaining an app’s base set of Android app themes.
 
