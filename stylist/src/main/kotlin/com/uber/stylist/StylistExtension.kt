@@ -21,7 +21,10 @@ import com.uber.stylist.StylistPlugin.Companion.DEFAULT_THEMES_XML_FILENAME
 class StylistExtension {
 
     /**
-     * Optional setting to control the name of the generated themes.xml file.
+     * Optional setting to control the name of the generated themes.xml file. Defaults to
+     * "themes_stylist_generated.xml"
+     *
+     * @see StylistPlugin.Companion.DEFAULT_THEMES_XML_FILENAME
      */
     var themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME
 
