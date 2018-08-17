@@ -25,17 +25,17 @@ import java.io.File
 
 open class StylistTask : DefaultTask() {
 
-    @Input
-    lateinit var outputDirectory: File
+  @Input
+  lateinit var outputDirectory: File
 
-    @Input
-    var themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME
+  @Input
+  var themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME
 
-    @Input
-    var formatSource: Boolean = true
+  @Input
+  var formatSource: Boolean = true
 
-    @TaskAction
-    fun execute(inputs: IncrementalTaskInputs) {
-        Stylist.generateThemesFor(outputDirectory, themesXmlFileName, formatSource)
-    }
+  @TaskAction
+  fun execute(inputs: IncrementalTaskInputs) {
+    Stylist.generateThemesFor(outputDirectory, themesXmlFileName, formatSource)
+  }
 }
