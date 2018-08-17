@@ -16,6 +16,7 @@
 
 package com.uber.stylist
 
+import com.uber.stylist.StylistPlugin.Companion.DEFAULT_THEMES_XML_FILENAME
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -28,10 +29,13 @@ open class StylistTask : DefaultTask() {
     lateinit var outputDirectory: File
 
     @Input
+    var themesXmlFileName: String = DEFAULT_THEMES_XML_FILENAME
+
+    @Input
     var formatSource: Boolean = true
 
     @TaskAction
     fun execute(inputs: IncrementalTaskInputs) {
-        Stylist.generateThemesFor(outputDirectory, formatSource)
+        Stylist.generateThemesFor(outputDirectory, themesXmlFileName, formatSource)
     }
 }

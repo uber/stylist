@@ -25,14 +25,12 @@ import com.uber.stylist.api.ThemeStencilService
 
 object Stylist {
 
-  private const val THEMES_XML_FILE_NAME = "themes_stylist_generated.xml"
-
   fun generateThemesFor(
-      outputDir: File, formatSource: Boolean) {
+      outputDir: File, themesXmlFileName: String, formatSource: Boolean) {
     val themeStencilService = ThemeStencilService.newInstance()
     val styleItemGroups = themeStencilService.getGlobalStyleItemGroups()
     val stencils = themeStencilService.getStencils()
-    generateThemesForStencils(stencils, styleItemGroups, outputDir, formatSource)
+    generateThemesForStencils(stencils, styleItemGroups, outputDir, themesXmlFileName, formatSource)
   }
 
   @VisibleForTesting
@@ -40,9 +38,10 @@ object Stylist {
       stencils: Set<ThemeStencil>,
       styleItemGroups: Set<StyleItemGroup>,
       outputDir: File,
+      themesXmlFileName: String,
       formatSource: Boolean) {
 
-    val themesXmlFile = File("$outputDir/values/$THEMES_XML_FILE_NAME").apply {
+    val themesXmlFile = File("$outputDir/values/$themesXmlFileName").apply {
       parentFile.mkdirs()
       createNewFile()
     }

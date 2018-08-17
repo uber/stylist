@@ -30,6 +30,7 @@ import org.gradle.api.Project
 class StylistPlugin : Plugin<Project> {
 
     companion object {
+        internal const val DEFAULT_THEMES_XML_FILENAME = "themes_stylist_generated.xml"
         private const val STYLIST = "stylist"
     }
 
