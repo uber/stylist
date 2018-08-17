@@ -26,14 +26,24 @@ import javax.xml.transform.stream.StreamResult
  *
  * Using a forked version to avoid pulling in a dependency from [jitpack.io](jitpack.io).
  */
-class ResourcesPoet private constructor() {
+class ResourcesPoet private constructor(
+    private val document: Document,
+    private val resourceElement: Element,
+    private val indent: Boolean = INDENT_DEFAULT) {
+
+  private val transformerFactory: TransformerFactory by lazy { TransformerFactory.newInstance() }
 
   companion object {
     private const val ELEMENT_RESOURCES = "resources"
+    private const val INDENT_DEFAULT = false
 
-    private var documentBuilderFactory: DocumentBuilderFactory? = null
-    private var documentBuilder: DocumentBuilder? = null
-    private var transformerFactory: TransformerFactory? = null
+    private val documentBuilder: DocumentBuilder by lazy {
+      try {
+        DocumentBuilderFactory.newInstance().newDocumentBuilder()
+      } catch (exception: ParserConfigurationException) {
+        throw IllegalStateException("Unable to create a ResourcePoet")
+      }
+    }
 
     /**
      * Create a new builder
@@ -41,12 +51,11 @@ class ResourcesPoet private constructor() {
      * @return poet
      */
     @JvmStatic
-    fun create(): ResourcesPoet {
-      init()
-      val document = documentBuilder!!.newDocument()
+    fun create(indent: Boolean = INDENT_DEFAULT): ResourcesPoet {
+      val document = documentBuilder.newDocument()
       val resources = document.createElement(ELEMENT_RESOURCES)
       document.appendChild(resources)
-      return create(document, resources)
+      return ResourcesPoet(document, resources, indent)
     }
 
     /**
@@ -56,9 +65,9 @@ class ResourcesPoet private constructor() {
      * @return poet
      */
     @JvmStatic
-    fun create(file: File): ResourcesPoet {
+    fun create(file: File, indent: Boolean = INDENT_DEFAULT): ResourcesPoet {
       try {
-        return create(FileInputStream(file))
+        return create(FileInputStream(file), indent)
       } catch (e: FileNotFoundException) {
         throw IllegalStateException("Unable to parse the resource file you passed. Make sure it is properly formatted", e)
       }
@@ -71,10 +80,9 @@ class ResourcesPoet private constructor() {
      * @return poet
      */
     @JvmStatic
-    fun create(inputStream: InputStream): ResourcesPoet {
-      init()
+    fun create(inputStream: InputStream, indent: Boolean = INDENT_DEFAULT): ResourcesPoet {
       try {
-        val document = documentBuilder!!.parse(inputStream)
+        val document = documentBuilder.parse(inputStream)
         val resources: Element
         val list = document.getElementsByTagName(ELEMENT_RESOURCES)
         if (list == null || list.length == 0) {
@@ -83,39 +91,14 @@ class ResourcesPoet private constructor() {
         } else {
           resources = list.item(0) as Element
         }
-        return create(document, resources)
+        return ResourcesPoet(document, resources, indent)
       } catch (e: IOException) {
         throw IllegalStateException("Unable to parse the resource file you passed. Make sure it is properly formatted", e)
       } catch (e: SAXException) {
         throw IllegalStateException("Unable to parse the resource file you passed. Make sure it is properly formatted", e)
       }
     }
-
-    private fun create(document: Document, resourceElement: Element): ResourcesPoet {
-      val poet = ResourcesPoet()
-      poet.document = document
-      poet.resourceElement = resourceElement
-      return poet
-    }
-
-    private fun init() {
-      if (documentBuilderFactory == null || documentBuilder == null) {
-        try {
-          documentBuilderFactory = DocumentBuilderFactory.newInstance()
-          documentBuilder = documentBuilderFactory!!.newDocumentBuilder()
-        } catch (exception: ParserConfigurationException) {
-          //Welp
-          throw IllegalStateException("Unable to create a ResourcePoet")
-        }
-
-        transformerFactory = TransformerFactory.newInstance()
-      }
-    }
   }
-
-  private lateinit var document: Document
-  private lateinit var resourceElement: Element
-  private var indent: Boolean = false
 
   /**
    * Add an attr to the config
@@ -469,17 +452,6 @@ class ResourcesPoet private constructor() {
   }
 
   /**
-   * Specify if you want the output to be indented or not
-   *
-   * @param indent true if you want indentation. false if not. Default is false
-   * @return poet
-   */
-  fun indent(indent: Boolean): ResourcesPoet {
-    this.indent = indent
-    return this
-  }
-
-  /**
    * Build the XML to a string
    *
    * @return the xml as a string
@@ -529,7 +501,7 @@ class ResourcesPoet private constructor() {
    */
   private fun build(result: StreamResult) {
     try {
-      val transformer = transformerFactory!!.newTransformer()
+      val transformer = transformerFactory.newTransformer()
       transformer.setOutputProperty(OutputKeys.ENCODING, "utf-8")
       if (indent) {
         transformer.setOutputProperty(OutputKeys.INDENT, "yes")

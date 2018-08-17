@@ -218,11 +218,7 @@ class StylistTest {
 
   private fun testXml(stencils: Set<ThemeStencil>, globalStyleGroups: Set<StyleItemGroup>, expectedXml: String, formatSource: Boolean = true) {
     val outputDir = Files.createTempDir()
-
-
-    outputDir.resolve("values").run {
-      deleteRecursively()
-
+    outputDir.resolve("values").apply {
       Stylist.generateThemesForStencils(stencils, globalStyleGroups, outputDir, formatSource)
 
       val xmlFileNames = listFiles().map { it.name }.toList()
@@ -230,7 +226,6 @@ class StylistTest {
 
       val generatedThemesXml = listFiles().first().readText()
       assertThat(generatedThemesXml).isEqualTo(expectedXml)
-
     }
     outputDir.deleteRecursively()
   }

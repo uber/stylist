@@ -42,16 +42,17 @@ object Stylist {
       outputDir: File,
       formatSource: Boolean) {
 
-    val valuesFolder = File("$outputDir/values").apply { mkdirs() }
-    val themesXml = File(valuesFolder, THEMES_XML_FILE_NAME).apply { createNewFile() }
+    val themesXmlFile = File("$outputDir/values/$THEMES_XML_FILE_NAME").apply {
+      parentFile.mkdirs()
+      createNewFile()
+    }
 
-    ResourcesPoet.create().apply {
+    ResourcesPoet.create(indent = formatSource).apply {
       stencils.forEach {
         it.setGlobalStyleItemGroups(styleItemGroups)
         addStyle(it.name, it.parent, it.styleItems())
       }
-      indent(formatSource)
-      build(themesXml)
+      build(themesXmlFile)
     }
   }
 }
