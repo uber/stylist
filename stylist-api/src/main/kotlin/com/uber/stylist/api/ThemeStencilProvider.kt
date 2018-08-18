@@ -16,19 +16,22 @@
 
 package com.uber.stylist.api
 
+/**
+ * This interface should be implemented in order to provide theme definitions to Stylist.
+ */
 interface ThemeStencilProvider {
 
   /**
-   * Provide a set of [ThemeStencil]s to be used during code generation.
+   * Provide a set of [ThemeStencils][ThemeStencil] to be used during code generation.
    *
-   * @return The set of [ThemeStencil]s.
+   * @return The set of [ThemeStencils][ThemeStencil].
    */
   fun stencils(): Set<ThemeStencil>
 
   /**
-   * Provide a set of [StyleItemGroup] classes that should be applied to all [ThemeStencil]s.
+   * Provide a set of [StyleItemGroups][StyleItemGroup] that should be applied to all [ThemeStencils][ThemeStencil].
    *
-   * @return The set of [StyleItemGroup] classes.
+   * @return The set of [StyleItemGroups][StyleItemGroup].
    */
   fun globalStyleItemGroups(): Set<StyleItemGroup>
 }

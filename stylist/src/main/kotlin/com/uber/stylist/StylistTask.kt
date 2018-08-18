@@ -23,6 +23,9 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 import java.io.File
 
+/**
+ * Gradle task responsible for invoking Stylist to generate the themes.
+ */
 open class StylistTask : DefaultTask() {
 
   @Input

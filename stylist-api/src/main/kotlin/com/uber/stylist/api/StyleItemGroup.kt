@@ -19,11 +19,16 @@ package com.uber.stylist.api
 import com.commit451.uresourcespoet.StyleItem
 
 /**
- * A [StyleItemGroup] defines code that must be generated in order for a [View] to receive new functionality.
- * Each [StyleItemGroup] can be declared by multiple [ThemeStencil]s, and generate otherwise duplicate code across all views
- * that exhibit them. Common examples include clicks, attach events, visibility changes, etc. They are a hook into the
- * [ThemeStencil]’s code gen process that are called during each [ThemeStencil]’s generation.
+ * A [StyleItemGroup] defines a logically-grouped set of style items that are to be generated in an Android XML theme.
+ * Each [StyleItemGroup] can be declared by multiple [ThemeStencils][ThemeStencil] and generate otherwise duplicated style items
+ * across all themes that declare them.
  */
 class StyleItemGroup(private vararg val styleItemVarArgs: StyleItem) {
+
+  /**
+   * Used to retrieve the [StyleItems][StyleItem] in this logical group.
+   *
+   * @return the collection of [StyleItems][StyleItem]
+   */
   fun styleItems() = styleItemVarArgs.toList()
 }

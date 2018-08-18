@@ -18,6 +18,9 @@ package com.uber.stylist
 
 import com.uber.stylist.Stylist.DEFAULT_THEMES_XML_FILENAME
 
+/**
+ * Gradle task extension that allows for customizing the behavior of Stylist.
+ */
 class StylistExtension {
 
   /**

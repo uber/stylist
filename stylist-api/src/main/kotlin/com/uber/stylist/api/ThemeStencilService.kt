@@ -18,6 +18,9 @@ package com.uber.stylist.api
 
 import java.util.ServiceLoader
 
+/**
+ * Service responsible for collecting the [ThemeStencils][ThemeStencil] to be used during code generation.
+ */
 class ThemeStencilService private constructor() {
 
   private val serviceLoader = ServiceLoader.load(ThemeStencilProvider::class.java)
@@ -25,7 +28,7 @@ class ThemeStencilService private constructor() {
   /**
    * Gets the [ThemeStencil] implementations loaded.
    *
-   * @return The located [ThemeStencil]s.
+   * @return The located [ThemeStencils][ThemeStencil].
    */
   fun getStencils(): Set<ThemeStencil> {
     val stencils = LinkedHashSet<ThemeStencil>()
@@ -37,7 +40,7 @@ class ThemeStencilService private constructor() {
   /**
    * Gets the [StyleItemGroup] implementations that should be applied to every [ThemeStencil].
    *
-   * @return The located global [StyleItemGroup]s.
+   * @return The located global [StyleItemGroups][StyleItemGroup].
    */
   fun getGlobalStyleItemGroups(): Set<StyleItemGroup> {
     val styleItemGroups = LinkedHashSet<StyleItemGroup>()
@@ -47,8 +50,11 @@ class ThemeStencilService private constructor() {
   }
 
   companion object {
-    fun newInstance(): ThemeStencilService {
-      return ThemeStencilService()
-    }
+    /**
+     * Creates a new [ThemeStencilService].
+     *
+     * @return the [ThemeStencilService]
+     */
+    fun newInstance() = ThemeStencilService()
   }
 }
