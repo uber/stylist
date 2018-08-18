@@ -18,6 +18,9 @@ package com.uber.stylist.api
 
 import java.util.ServiceLoader
 
+/**
+ * Service responsible for collecting the [ThemeStencil]s to be used during code generation.
+ */
 class ThemeStencilService private constructor() {
 
   private val serviceLoader = ServiceLoader.load(ThemeStencilProvider::class.java)
@@ -47,8 +50,11 @@ class ThemeStencilService private constructor() {
   }
 
   companion object {
-    fun newInstance(): ThemeStencilService {
-      return ThemeStencilService()
-    }
+    /**
+     * Creates a new [ThemeStencilService].
+     *
+     * @return the [ThemeStencilService]
+     */
+    fun newInstance() = ThemeStencilService()
   }
 }

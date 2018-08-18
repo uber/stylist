@@ -23,20 +23,34 @@ import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import com.uber.stylist.api.ThemeStencilService
 
+/**
+ * This contains the core logic of the Stylist library.
+ */
 object Stylist {
 
   const val DEFAULT_THEMES_XML_FILENAME = "themes_stylist_generated.xml"
 
+  /**
+   * Generate Android XML themes for the [ThemeStencil]s and [StyleItemGroup]s
+   * provided by the [ThemeStencilService].
+   *
+   * @outputDir the res directory to generate the themes into
+   * @themesXmlFilename the name of the file for the generated themes
+   * @formatSource whether or not to format and indent the generated themes file
+   */
   fun generateThemesFor(
-      outputDir: File, themesXmlFileName: String, formatSource: Boolean) {
+      outputDir: File, themesXmlFilename: String, formatSource: Boolean) {
     val themeStencilService = ThemeStencilService.newInstance()
     val styleItemGroups = themeStencilService.getGlobalStyleItemGroups()
     val stencils = themeStencilService.getStencils()
-    generateThemesForStencils(stencils, styleItemGroups, outputDir, themesXmlFileName, formatSource)
+    generateThemesForStencils(stencils, styleItemGroups, outputDir, themesXmlFilename, formatSource)
   }
 
+  /**
+   * See [Stylist.generateThemesFor]
+   */
   @VisibleForTesting
-  fun generateThemesForStencils(
+  internal fun generateThemesForStencils(
       stencils: Set<ThemeStencil>,
       styleItemGroups: Set<StyleItemGroup>,
       outputDir: File,

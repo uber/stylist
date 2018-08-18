@@ -18,6 +18,9 @@ package com.uber.stylist.api
 
 import com.commit451.uresourcespoet.StyleItem
 
+/**
+ * The definition for an an XML theme to be generated.
+ */
 class ThemeStencil(
     val name: String,
     val parent: String,
@@ -25,10 +28,21 @@ class ThemeStencil(
 
   private val globalStyleItemGroups = mutableSetOf<StyleItemGroup>()
 
+  /**
+   * Returns a collection of [StyleItem]s to be included in the XML theme
+   * including those that are globally applicable.
+   *
+   * @return the collection of [StyleItem]s
+   */
   fun styleItems(): List<StyleItem> = (globalStyleItemGroups + addedStyleItemGroups.toSet())
       .flatMap { it.styleItems() }
       .toList()
 
+  /**
+   * Applies the globally-applicable [StyleItemGroup]s to this [ThemeStencil].
+   *
+   * @param styleItemGroups the set of [StyleItemGroup]s
+   */
   fun setGlobalStyleItemGroups(styleItemGroups: Set<StyleItemGroup>) {
     globalStyleItemGroups.apply {
       clear()

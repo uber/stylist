@@ -27,6 +27,9 @@ import org.gradle.api.DomainObjectSet
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
+/**
+ * Gradle plugin that creates and configures a [StylistTask] for Android library and app modules.
+ */
 class StylistPlugin : Plugin<Project> {
 
   companion object {
