@@ -20,15 +20,15 @@ import com.commit451.uresourcespoet.StyleItem
 
 /**
  * A [StyleItemGroup] defines a logically-grouped set of style items that are to be generated in an Android XML theme.
- * Each [StyleItemGroup] can be declared by multiple [ThemeStencil]s and generate otherwise duplicated style items
+ * Each [StyleItemGroup] can be declared by multiple [ThemeStencils][ThemeStencil] and generate otherwise duplicated style items
  * across all themes that declare them.
  */
 class StyleItemGroup(private vararg val styleItemVarArgs: StyleItem) {
 
   /**
-   * Used to retrieve the [StyleItem]s in this logical group.
+   * Used to retrieve the [StyleItems][StyleItem] in this logical group.
    *
-   * @return the collection of [StyleItem]s
+   * @return the collection of [StyleItems][StyleItem]
    */
   fun styleItems() = styleItemVarArgs.toList()
 }

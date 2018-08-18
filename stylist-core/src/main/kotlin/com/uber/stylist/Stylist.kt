@@ -31,7 +31,7 @@ object Stylist {
   const val DEFAULT_THEMES_XML_FILENAME = "themes_stylist_generated.xml"
 
   /**
-   * Generate Android XML themes for the [ThemeStencil]s and [StyleItemGroup]s
+   * Generate Android XML themes for the [ThemeStencils][ThemeStencil] and [StyleItemGroups][StyleItemGroup]
    * provided by the [ThemeStencilService].
    *
    * @outputDir the res directory to generate the themes into

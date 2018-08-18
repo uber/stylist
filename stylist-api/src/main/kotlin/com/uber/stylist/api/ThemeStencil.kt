@@ -29,19 +29,19 @@ class ThemeStencil(
   private val globalStyleItemGroups = mutableSetOf<StyleItemGroup>()
 
   /**
-   * Returns a collection of [StyleItem]s to be included in the XML theme
+   * Returns a collection of [StyleItems][StyleItem] to be included in the XML theme
    * including those that are globally applicable.
    *
-   * @return the collection of [StyleItem]s
+   * @return the collection of [StyleItems][StyleItem]
    */
   fun styleItems(): List<StyleItem> = (globalStyleItemGroups + addedStyleItemGroups.toSet())
       .flatMap { it.styleItems() }
       .toList()
 
   /**
-   * Applies the globally-applicable [StyleItemGroup]s to this [ThemeStencil].
+   * Applies the globally-applicable [StyleItemGroups][StyleItemGroup] to this [ThemeStencil].
    *
-   * @param styleItemGroups the set of [StyleItemGroup]s
+   * @param styleItemGroups the set of [StyleItemGroups][StyleItemGroup]
    */
   fun setGlobalStyleItemGroups(styleItemGroups: Set<StyleItemGroup>) {
     globalStyleItemGroups.apply {
