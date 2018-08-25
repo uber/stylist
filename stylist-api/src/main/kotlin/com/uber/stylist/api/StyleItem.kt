@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018. Commit 451
+ * Copyright (c) 2018. Uber Technologies
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.commit451.uresourcespoet
+package com.uber.stylist.api
 
 /**
- * An item within a style, like
- *
- * <item name="android:windowBackground">@android:color/black</item>
+ * An item within a style. The name includes the "android" prefix for
+ * platform attributes. The value can be a theme attribute (?foo),
+ * resource (@color/foo), or raw value (16dp).
  */
 data class StyleItem(val name: String, val value: String)

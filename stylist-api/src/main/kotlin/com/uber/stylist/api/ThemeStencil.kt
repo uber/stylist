@@ -16,7 +16,7 @@
 
 package com.uber.stylist.api
 
-import com.commit451.uresourcespoet.StyleItem
+import com.uber.stylist.api.StyleItem
 
 /**
  * The definition for an an XML theme to be generated.
