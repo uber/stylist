@@ -18,8 +18,8 @@ package com.uber.stylist.myproviders;
 
 import android.support.annotation.NonNull;
 
-import com.commit451.uresourcespoet.StyleItem;
 import com.google.auto.service.AutoService;
+import com.uber.stylist.api.StyleItem;
 import com.uber.stylist.api.StyleItemGroup;
 import com.uber.stylist.api.ThemeStencil;
 import com.uber.stylist.api.ThemeStencilProvider;

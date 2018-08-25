@@ -16,7 +16,7 @@
 
 package com.uber.stylist.api
 
-import com.commit451.uresourcespoet.StyleItem
+import com.uber.stylist.api.StyleItem
 
 /**
  * A [StyleItemGroup] defines a logically-grouped set of style items that are to be generated in an Android XML theme.

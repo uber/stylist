@@ -36,7 +36,7 @@ def build = [
 ]
 
 def external = [
-
+    resourcesPoet : "com.commit451:resourcespoet:2.1.0"
 ]
 
 def kotlin = [

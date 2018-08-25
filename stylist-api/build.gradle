@@ -22,7 +22,6 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
     implementation deps.kotlin.stdLibJdk8
-    api project(":resources-poet")
 }
 
 if (rootProject.projectDir.name != "buildSrc") {

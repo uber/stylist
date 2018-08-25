@@ -18,6 +18,5 @@
 include ':stylist'
 include ':stylist-api'
 include ':stylist-core'
-include ':resources-poet'
 
 include ':sample:providers'

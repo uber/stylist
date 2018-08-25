@@ -21,9 +21,9 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
+    implementation deps.external.resourcesPoet
     implementation deps.kotlin.stdLibJdk8
     implementation deps.support.annotations
-    implementation project(":resources-poet")
     implementation project(":stylist-api")
 
     // Dont need to run tests in buildSrc

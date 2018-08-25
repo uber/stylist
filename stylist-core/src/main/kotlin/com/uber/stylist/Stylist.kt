@@ -18,7 +18,8 @@ package com.uber.stylist
 
 import android.support.annotation.VisibleForTesting
 import java.io.File
-import com.commit451.uresourcespoet.ResourcesPoet
+import com.commit451.resourcespoet.ResourcesPoet
+import com.commit451.resourcespoet.StyleItem
 import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import com.uber.stylist.api.ThemeStencilService
@@ -65,7 +66,7 @@ object Stylist {
     ResourcesPoet.create(indent = formatSource).apply {
       stencils.forEach {
         it.setGlobalStyleItemGroups(styleItemGroups)
-        addStyle(it.name, it.parent, it.styleItems())
+        addStyle(it.name, it.parent, it.styleItems().map { StyleItem(it.name, it.value) })
       }
       build(themesXmlFile)
     }

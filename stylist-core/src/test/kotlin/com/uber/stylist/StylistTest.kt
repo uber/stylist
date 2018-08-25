@@ -16,10 +16,10 @@
 
 package com.uber.stylist
 
-import com.commit451.uresourcespoet.StyleItem
 import com.google.common.io.Files
 import com.google.common.truth.Truth.assertThat
 import com.uber.stylist.Stylist.DEFAULT_THEMES_XML_FILENAME
+import com.uber.stylist.api.StyleItem
 import com.uber.stylist.api.StyleItemGroup
 import com.uber.stylist.api.ThemeStencil
 import org.junit.Test
@@ -33,113 +33,113 @@ class StylistTest {
 
     private const val THEMES_NO_STYLE_GROUPS = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-  <style name="Theme.Test" parent="Theme.AppCompat"/>
-  <style name="Theme.Test.Light" parent="Theme.AppCompat.Light"/>
-  <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog"/>
-  <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog"/>
+    <style name="Theme.Test" parent="Theme.AppCompat"/>
+    <style name="Theme.Test.Light" parent="Theme.AppCompat.Light"/>
+    <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog"/>
+    <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog"/>
 </resources>
 """
 
     private const val THEMES_WITH_STYLE_GROUP = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-  <style name="Theme.Test" parent="Theme.AppCompat">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
-  <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
-  <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
-  <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
+    <style name="Theme.Test" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>
 """
 
     private const val THEMES_WITH_STYLE_GROUPS = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-  <style name="Theme.Test" parent="Theme.AppCompat">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
-  <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
-  <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
-  <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
+    <style name="Theme.Test" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
+    <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
+    <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
+    <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
 </resources>
 """
 
     private const val THEMES_WITH_STYLE_GROUPS_PLUS_ADDED = """<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-  <style name="Theme.Test" parent="Theme.AppCompat">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
-  <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-  </style>
-  <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-    <item name="dialogSpecificAttr1">foo</item>
-    <item name="dialogSpecificAttr2">bar</item>
-  </style>
-  <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="textSizeSmall">12dp</item>
-    <item name="textSizeMedium">16dp</item>
-    <item name="textSizeLarge">20dp</item>
-    <item name="dialogSpecificAttr1">foo</item>
-    <item name="dialogSpecificAttr2">bar</item>
-  </style>
+    <style name="Theme.Test" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
+    <style name="Theme.Test.Light" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+    </style>
+    <style name="Theme.Test.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+        <item name="dialogSpecificAttr1">foo</item>
+        <item name="dialogSpecificAttr2">bar</item>
+    </style>
+    <style name="Theme.Test.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textSizeSmall">12dp</item>
+        <item name="textSizeMedium">16dp</item>
+        <item name="textSizeLarge">20dp</item>
+        <item name="dialogSpecificAttr1">foo</item>
+        <item name="dialogSpecificAttr2">bar</item>
+    </style>
 </resources>
 """
 
