@@ -16,7 +16,7 @@
 
 package com.uber.stylist.myproviders;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.auto.service.AutoService;
 import com.uber.stylist.api.StyleItem;

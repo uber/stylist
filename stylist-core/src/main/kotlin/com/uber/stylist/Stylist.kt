@@ -16,7 +16,7 @@
 
 package com.uber.stylist
 
-import android.support.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting
 import java.io.File
 import com.commit451.resourcespoet.ResourcesPoet
 import com.commit451.resourcespoet.StyleItem

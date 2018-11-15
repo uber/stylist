@@ -21,14 +21,14 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
+    implementation deps.androidx.annotations
     implementation deps.external.resourcesPoet
     implementation deps.kotlin.stdLibJdk8
-    implementation deps.support.annotations
     implementation project(":stylist-api")
 
     // Dont need to run tests in buildSrc
     if (rootProject.projectDir.name != "buildSrc") {
-        testImplementation deps.support.annotations
+        testImplementation deps.androidx.annotations
         testImplementation deps.test.junit
         testImplementation deps.test.truth
     }

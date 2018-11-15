@@ -34,6 +34,6 @@ dependencies {
     annotationProcessor deps.apt.autoService
     compileOnly deps.apt.autoService
 
-    implementation deps.support.annotations
+    implementation deps.androidx.annotations
     implementation project(":stylist-api")
 }
