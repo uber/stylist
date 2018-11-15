@@ -15,8 +15,14 @@
  */
 
 def versions = [
-    kotlin    : "1.2.60",
-    support   : "27.1.0"
+    kotlin    : "1.3.10"
+]
+
+def androidx = [
+    annotations      : "androidx.annotation:annotation:1.0.0",
+    appcompat        : "androidx.appcompat:appcompat:1.0.0",
+    constraintLayout : "androidx.constraintlayout:constraintlayout:1.1.2",
+    v4               : "androidx.legacy:legacy-support-v4:1.0.0"
 ]
 
 def apt = [
@@ -24,8 +30,8 @@ def apt = [
 ]
 
 def build = [
-    androidPlugin       : "com.android.tools.build:gradle:3.1.4",
-    buildToolsVersion   : "28.0.2",
+    androidPlugin       : "com.android.tools.build:gradle:3.2.1",
+    buildToolsVersion   : "28.0.3",
     compileSdkVersion   : 28,
     ci: 'true' == System.getenv('CI'),
     googleJavaFormatter : "com.google.googlejavaformat:google-java-format:1.4",
@@ -45,25 +51,18 @@ def kotlin = [
     stdLibJdk8   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
 ]
 
-def support = [
-    annotations      : "com.android.support:support-annotations:${versions.support}",
-    appcompat        : "com.android.support:appcompat-v7:${versions.support}",
-    constraintLayout : "com.android.support.constraint:constraint-layout:1.1.2",
-    v4               : "com.android.support:support-v4:${versions.support}"
-]
-
 def test = [
     junit          : 'junit:junit:4.12',
     truth          : "com.google.truth:truth:0.40"
 ]
 
 ext.deps = [
-    "apt"      : apt,
-    "build"    : build,
-    "external" : external,
-    "kotlin"   : kotlin,
-    "support"  : support,
-    "test"     : test,
-    "versions" : versions
+    "androidx"  : androidx,
+    "apt"       : apt,
+    "build"     : build,
+    "external"  : external,
+    "kotlin"    : kotlin,
+    "test"      : test,
+    "versions"  : versions
 ]
 

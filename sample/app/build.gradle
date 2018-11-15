@@ -41,6 +41,6 @@ android {
 
 dependencies {
     implementation project(":sample:library")
-    implementation deps.support.appcompat
-    implementation deps.support.constraintLayout
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.constraintLayout
 }
