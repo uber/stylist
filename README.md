@@ -59,17 +59,17 @@ This may look like a lot of boilerplate for simple style item shared by two them
 
 Stylist [![Maven Central](https://img.shields.io/maven-central/v/com.uber.stylist/stylist.svg)](https://mvnrepository.com/artifact/com.uber.stylist/stylist)
 ```gradle
-classpath 'com.uber.stylist:stylist:0.0.1'
+classpath 'com.uber.stylist:stylist:0.0.2'
 ```
 
 Stylist Core [![Maven Central](https://img.shields.io/maven-central/v/com.uber.stylist/stylist-core.svg)](https://mvnrepository.com/artifact/com.uber.stylist/stylist-core)
 ```gradle
-classpath 'com.uber.stylist:stylist-core:0.0.1'
+classpath 'com.uber.stylist:stylist-core:0.0.2'
 ```
 
 Stylist API [![Maven Central](https://img.shields.io/maven-central/v/com.uber.stylist/stylist-api.svg)](https://mvnrepository.com/artifact/com.uber.stylist/stylist-api)
 ```gradle
-classpath 'com.uber.stylist:stylist-api:0.0.1'
+classpath 'com.uber.stylist:stylist-api:0.0.2'
 ```
 
 ## License
