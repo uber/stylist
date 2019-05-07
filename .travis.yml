@@ -11,8 +11,12 @@ android:
 jdk:
   - oraclejdk8
 
+before_script:
+  - "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+
 script:
   - ./gradlew assembleDebug test check
+  - fossa
 
 after_success:
   - .buildscript/deploy_snapshot.sh
