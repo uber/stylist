@@ -19,8 +19,8 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
-        maven { url deps.build.gradlePluginsUrl }
+        mavenCentral()
+        gradlePluginPortal()
     }
 
     dependencies {
@@ -34,14 +34,14 @@ subprojects {
     buildscript {
         repositories {
             google()
-            jcenter()
+            gradlePluginPortal()
         }
     }
 
     repositories {
         google()
-        jcenter()
-        maven { url deps.build.gradlePluginsUrl }
+        mavenCentral()
+        gradlePluginPortal()
     }
 
     apply plugin: 'checkstyle'
