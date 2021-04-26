@@ -16,7 +16,7 @@
 
 buildscript {
     repositories {
-        maven { url deps.build.gradlePluginsUrl }
+        mavenCentral()
     }
 
     dependencies {
