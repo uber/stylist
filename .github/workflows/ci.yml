@@ -27,7 +27,6 @@ jobs:
     run: ./gradlew assemble --stacktrace
   - name: Run tests
     run: ./gradlew test --stacktrace
-This conversation was marked as resolved by sanchezz93
   - name: Gradle Check
     run: ./gradlew check --stacktrace
   - name: Upload snapshot (main only)
