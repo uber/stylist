@@ -12,7 +12,7 @@ jobs:
   steps:
   - name: Checkout
   - uses: actions/checkout@v2
-  - nmae: Install JDK ${{ matrix.java_version }}
+  - name: Install JDK ${{ matrix.java_version }}
   - uses: actions/setup-java@v2
     with:
     java-version: ${{ matrix.java_version }}
